@@ -1,0 +1,56 @@
+[
+  {
+    "description": "Tab line",
+    "has_tab": true,
+    "has_break_line": false,
+    "pattern": "",
+    "words": []
+  },
+  {
+    "description": "Break line",
+    "has_tab": false,
+    "has_break_line": true,
+    "pattern": "",
+    "words": [
+      "SELECT",
+      "FROM",
+      "WHERE"
+    ]
+  },
+  {
+    "description": "Break line values",
+    "has_tab": true,
+    "has_break_line": true,
+    "pattern": "",
+    "words": [],
+    "between": {
+      "start" : [
+        "FROM",
+        "SELECT"
+      ],
+      "end": [
+        "FROM",
+        "WHERE",
+        "JOIN"
+      ]
+    }
+  },
+  {
+    "description": "Break where conditions",
+    "has_tab": true,
+    "has_break_line": true,
+    "pattern": "",
+    "words": [],
+    "between": {
+      "start" : [
+        "WHERE"
+      ],
+      "end": [
+        "ORDER BY"
+      ],
+      "is_concat": true,
+      "separator": "AND"
+    }
+  }
+]
+
