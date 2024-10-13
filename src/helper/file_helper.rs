@@ -1,8 +1,7 @@
-use std::env;
-use std::fs::File;
+use std::{env, io};
+use std::fs::{File, OpenOptions};
 use std::path::PathBuf;
-use std::io::{ Read };
-
+use std::io::{ Read, Write };
 pub fn config_path() -> Vec<String> {
 
     let path_parts : Vec<String> = vec![
@@ -43,4 +42,15 @@ pub fn read_file(  path : &PathBuf ) -> String {
     file.read_to_string( &mut ds_content).expect("error reading file");
 
     ds_content
+}
+
+pub fn overwrite_file( path : &PathBuf, content: &String) {
+
+    let mut file = OpenOptions::new()
+        .write(true)
+        .truncate(true)
+        .open(path).expect("error on trucated save file");
+
+    file.write_all(content.as_bytes()).expect("error writing file");
+
 }

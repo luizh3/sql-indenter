@@ -14,7 +14,8 @@
     "words": [
       "SELECT",
       "FROM",
-      "WHERE"
+      "WHERE",
+      "AND"
     ]
   },
   {
@@ -23,17 +24,35 @@
     "has_break_line": true,
     "pattern": "",
     "words": [],
-    "between": {
-      "start" : [
-        "FROM",
-        "SELECT"
-      ],
-      "end": [
-        "FROM",
-        "WHERE",
-        "JOIN"
-      ]
-    }
+    "between": [
+      {
+        "start" : "SELECT",
+        "end": "FROM"
+      },
+      {
+        "start" : "FROM",
+        "end": "WHERE"
+      }
+    ]
+  },
+  {
+    "description": "Join indent",
+    "has_tab": false,
+    "has_break_line": false,
+    "pattern": "",
+    "words": [],
+    "between": [
+      {
+        "start" : "JOIN",
+        "end": "WHERE",
+        "rule": {
+          "is_concat": true,
+          "separator": "",
+          "has_tab": false,
+          "has_break_line": false
+        }
+      }
+    ]
   },
   {
     "description": "Break where conditions",
@@ -41,16 +60,18 @@
     "has_break_line": true,
     "pattern": "",
     "words": [],
-    "between": {
-      "start" : [
-        "WHERE"
-      ],
-      "end": [
-        "ORDER BY"
-      ],
-      "is_concat": true,
-      "separator": "AND"
-    }
+    "between": [
+      {
+        "start" : "WHERE",
+        "end": "ORDER BY",
+        "rule": {
+          "is_concat": true,
+          "separator": "AND",
+          "has_tab": true,
+          "has_break_line": true
+        }
+      }
+    ]
   }
 ]
 

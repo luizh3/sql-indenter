@@ -2,7 +2,7 @@ use crate::models::token_model::TokenModel;
 
 pub fn to_tokens(raw_text : &String ) -> Vec<TokenModel> {
     let mut raw_tokens : Vec<String> = raw_text.split_whitespace().map(|current| current.to_string()).collect();
-    raw_tokens.iter().map(|current| TokenModel::new( current.clone(), None, Vec::new() )).collect()
+    raw_tokens.iter().map(|current| TokenModel::new( current.clone(), None, None, Vec::new() )).collect()
 }
 
 /* Example */
